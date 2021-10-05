@@ -2,7 +2,7 @@
   "$id": "confluencePages_confluencePagesConnector",
   "$schema": "https://schema.yext.com/config/km/connector/v1",
   "displayName": "Confluence Pages Connector",
-  "entityType": "confluencePages_Page",
+  "entityType": "confluencePages_page",
   "source": {
     "sourceConfig": {
       "apiPullConfig": {
