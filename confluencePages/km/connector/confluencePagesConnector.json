@@ -7,12 +7,13 @@
     "sourceConfig": {
       "apiPullConfig": {
         "requestType": "GET",
-        "url": "https://${{confluenceSubdomain}}.atlassian.net/wiki/rest/api/content?expand\u003dbody.view",
+        "url": "https://katonahtest.atlassian.net/wiki/rest/api/content?expand\u003dbody.view,childTypes.all,history,space,metadata.labels,history.lastUpdated",
         "headers": {
-        	"Authorization": "${{basicAuthToken}}"
+          "Authorization": "Basic ZHpmZXNqaWFuQGdtYWlsLmNvbTpDV3RmWUY2cHFnY1dKYVdib1NRaUZFNjM\u003d"
         },
         "queryParams": {
-          "expand": "body.view"
+          "expand": "body.view,childTypes.all,history,space,metadata.labels,history.lastUpdated",
+          "type": "page"
         },
         "dataFormat": "JSON"
       }
@@ -42,21 +43,91 @@
         "type": "JSON",
         "header": "Type",
         "path": "type"
+      },
+      {
+        "type": "JSON",
+        "header": "Link",
+        "path": "_links.self"
+      },
+      {
+        "type": "JSON",
+        "header": "Last Updated Date",
+        "path": "history.lastUpdated.when"
+      },
+      {
+        "type": "JSON",
+        "header": "Last Updated By",
+        "path": "history.lastUpdated.by.displayName"
+      },
+      {
+        "type": "JSON",
+        "header": "Last Updated Friendly",
+        "path": "history.lastUpdated.friendlyWhen"
+      },
+      {
+        "type": "JSON",
+        "header": "Created Date",
+        "path": "history.createdDate"
+      },
+      {
+        "type": "JSON",
+        "header": "Creator Name",
+        "path": "history.createdBy.displayName"
+      },
+      {
+        "type": "JSON",
+        "header": "Creator Avatar",
+        "path": "history.createdBy.profilePicture.path"
+      },
+      {
+        "type": "JSON",
+        "header": "Creator Email",
+        "path": "history.createdBy.email"
+      },
+      {
+        "type": "JSON",
+        "header": "Space ID",
+        "path": "space.id"
+      },
+      {
+        "type": "JSON",
+        "header": "Space Name",
+        "path": "space.name"
+      },
+      {
+        "type": "JSON",
+        "header": "Space Link",
+        "path": "space._links.self"
+      },
+      {
+        "type": "JSON",
+        "header": "Labels",
+        "path": "metadata.labels.results[*].label"
       }
     ]
   },
   "transforms": [
     {
-      "filterRows": {
-        "action": "KEEP",
-        "combinator": "AND",
-        "rules": [
-          {
-            "columnHeader": "Type",
-            "conditional": "EQUALS",
-            "conditionalInput": "page"
-          }
-        ]
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Creator Avatar"
+          ]
+        },
+        "plugin": "confluencePages_createUrl",
+        "function": "createUrl"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Last Updated Date",
+            "Created Date"
+          ]
+        },
+        "plugin": "confluencePages_formatDates",
+        "function": "formatDate"
       }
     }
   ],
@@ -67,6 +138,60 @@
       "subfieldPath": []
     },
     {
+      "field": "confluencePages_lastUpdatedFriendly",
+      "header": "Last Updated Friendly",
+      "subfieldPath": []
+    },
+    {
+      "field": "keywords",
+      "header": "Labels",
+      "subfieldPath": []
+    },
+    {
+      "field": "confluencePages_lastUpdatedDate",
+      "header": "Last Updated Date",
+      "subfieldPath": []
+    },
+    {
+      "field": "confluencePages_spaceURL",
+      "header": "Space Link",
+      "subfieldPath": []
+    },
+    {
+      "field": "confluencePages_creatorEmail",
+      "header": "Creator Email",
+      "subfieldPath": []
+    },
+    {
+      "field": "confluencePages_lastUpdatedBy",
+      "header": "Last Updated By",
+      "subfieldPath": []
+    },
+    {
+      "field": "confluencePages_creatorName",
+      "header": "Creator Name",
+      "subfieldPath": []
+    },
+    {
+      "field": "confluencePages_creatorAvatar",
+      "header": "Creator Avatar",
+      "subfieldPath": [
+        {
+          "name": "url"
+        }
+      ]
+    },
+    {
+      "field": "confluencePages_spaceID",
+      "header": "Space ID",
+      "subfieldPath": []
+    },
+    {
+      "field": "confluencePages_spaceName",
+      "header": "Space Name",
+      "subfieldPath": []
+    },
+    {
       "field": "entityId",
       "header": "ID",
       "subfieldPath": []
@@ -74,6 +199,16 @@
     {
       "field": "body",
       "header": "Body",
+      "subfieldPath": []
+    },
+    {
+      "field": "landingPageUrl",
+      "header": "Link",
+      "subfieldPath": []
+    },
+    {
+      "field": "confluencePages_createdDate",
+      "header": "Created Date",
       "subfieldPath": []
     }
   ],

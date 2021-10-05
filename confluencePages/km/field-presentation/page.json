@@ -22,6 +22,42 @@
         },
         {
           "id": "body"
+        },
+        {
+          "id": "landingPageUrl"
+        },
+        {
+          "id": "confluencePages_lastUpdatedDate"
+        },
+        {
+          "id": "confluencePages_lastUpdatedFriendly"
+        },
+        {
+          "id": "confluencePages_lastUpdatedBy"
+        },
+        {
+          "id": "confluencePages_createdDate"
+        },
+        {
+          "id": "confluencePages_creatorName"
+        },
+        {
+          "id": "confluencePages_creatorAvatar"
+        },
+        {
+          "id": "confluencePages_creatorEmail"
+        },
+        {
+          "id": "confluencePages_spaceID"
+        },
+        {
+          "id": "confluencePages_spaceName"
+        },
+        {
+          "id": "confluencePages_spaceURL"
+        },
+        {
+          "id": "keywords"
         }
       ]
     },
