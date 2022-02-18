@@ -1,78 +1,7 @@
 {
   "$id": "confluencePages_page",
-  "$schema": "https://schema.yext.com/config/km/entity-type/v1",
+  "$schema": "https://schema.yext.com/config/km/entity-type/v2",
   "description": "",
   "displayName": "Confluence Page",
-  "enabled": true,
-  "field": [
-    {
-      "id": "body",
-      "required": false
-    },
-    {
-      "id": "landingPageUrl",
-      "required": false
-    },
-    {
-      "id": "name",
-      "required": true
-    },
-    {
-      "id": "confluencePages_createdDate",
-      "required": false
-    },
-    {
-      "id": "confluencePages_creatorAvatar",
-      "required": false
-    },
-    {
-      "id": "confluencePages_creatorEmail",
-      "required": false
-    },
-    {
-      "id": "confluencePages_creatorName",
-      "required": false
-    },
-    {
-      "id": "confluencePages_lastUpdatedDate",
-      "required": false
-    },
-    {
-      "id": "confluencePages_lastUpdatedBy",
-      "required": false
-    },
-    {
-      "id": "confluencePages_lastUpdatedFriendly",
-      "required": false
-    },
-    {
-      "id": "confluencePages_spaceID",
-      "required": false
-    },
-    {
-      "id": "confluencePages_spaceName",
-      "required": false
-    },
-    {
-      "id": "confluencePages_spaceURL",
-      "required": false
-    },
-    {
-      "id": "folder",
-      "required": false
-    },
-    {
-      "id": "keywords",
-      "required": false
-    },
-    {
-      "id": "labels",
-      "required": false
-    },
-    {
-      "id": "entityId",
-      "required": true
-    }
-  ],
   "pluralDisplayName": "Confluence Pages"
 }
