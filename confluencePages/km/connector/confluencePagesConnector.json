@@ -5,18 +5,17 @@
   "entityType": "confluencePages_page",
   "source": {
     "sourceConfig": {
-        "nativeSourceConfig": {
-          "source": "confluence",
-          "operation": "fetchContent",
-          "inputs": {
-            "confluenceSubdomain": "${{confluenceSubdomain}}",
-            "username":"${{username}}",
-            "password":"${{password}}",
-            "type":"page"
+      "nativeSourceConfig": {
+        "source": "confluence",
+        "operation": "fetchContent",
+        "inputs": {
+          "confluenceSubdomain": "${{confluenceSubdomain}}",
+          "username":"${{username}}",
+          "password":"${{password}}",
+          "type":"page"
           }
         }
-      }
-    },
+      },
     "selectors": [
       {
         "type": "JSON",
