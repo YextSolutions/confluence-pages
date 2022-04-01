@@ -13,6 +13,7 @@
             "username":"${{username}}",
             "password":"${{password}}",
             "type":"page"
+          }
         }
       }
     },
